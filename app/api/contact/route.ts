@@ -53,7 +53,7 @@ async function verifyEmailExists(email: string): Promise<boolean> {
 export async function POST(request: Request) {
 	try {
 		const body = await request.json()
-		const { name, email, phone, company, message } = body
+		const { name, email, phone, message } = body
 
 		// First verify if the email exists
 		const emailExists = await verifyEmailExists(email)
@@ -76,7 +76,6 @@ export async function POST(request: Request) {
 					<p><strong>Име:</strong> ${name}</p>
 					<p><strong>Имейл:</strong> ${email}</p>
 					<p><strong>Телефон:</strong> ${phone || "Не е предоставено"}</p>
-					<p><strong>Компания:</strong> ${company || "Не е предоставено"}</p>
 					<p><strong>Съобщение:</strong></p>
 					<p>${message}</p>
 				`,

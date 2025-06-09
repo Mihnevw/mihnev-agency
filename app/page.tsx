@@ -38,12 +38,12 @@ export default function Home() {
           <Portfolio />
         </SectionTracker>
 
-        <SectionTracker sectionName="reviews">
-          <Reviews />
-        </SectionTracker>
-
         <SectionTracker sectionName="pricing">
           <Pricing />
+        </SectionTracker>
+
+        <SectionTracker sectionName="reviews">
+          <Reviews />
         </SectionTracker>
 
         <SectionTracker sectionName="contact">
