@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://mihnevagency.com
+
+# Sitemaps
+Sitemap: https://mihnevagency.com/sitemap.xml
