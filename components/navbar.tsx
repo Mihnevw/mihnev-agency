@@ -147,12 +147,7 @@ export default function Navbar() {
                 >
                   <span className="text-white font-bold text-lg">S</span>
                 </motion.div>
-                <span
-                  className={cn(
-                    "font-bold text-xl",
-                    isDark ? "text-white" : "text-slate-900"
-                  )}
-                >
+                <span className={cn("font-bold text-xl", isDark ? "text-white" : "text-slate-900")}>
                   Mihnev Agency
                 </span>
               </Link>
@@ -164,15 +159,16 @@ export default function Navbar() {
                 <motion.button
                   key={item.name}
                   onClick={() => handleNavigation(item.id, item.label)}
-                  className={`font-medium transition-colors hover:text-emerald-600 dark:hover:text-emerald-400 ${
+                  className={cn(
+                    "font-medium transition-colors hover:text-emerald-600 dark:hover:text-emerald-400",
                     isScrolled
                       ? isDark
                         ? "text-slate-200"
-                        : "text-slate-700"
+                        : "text-slate-900"
                       : isDark
-                        ? "text-white"
-                        : "text-slate-900 hover:text-emerald-600"
-                  }`}
+                      ? "text-white"
+                      : "text-slate-900"
+                  )}
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, y: -20 }}
@@ -211,7 +207,16 @@ export default function Navbar() {
               <ThemeToggle />
               <motion.button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`p-2 rounded-md ${isScrolled ? (isDark ? "text-white" : "text-slate-700") : "text-white"}`}
+                className={cn(
+                  "p-2 rounded-md",
+                  isScrolled
+                    ? isDark
+                      ? "text-white"
+                      : "text-slate-900"
+                    : isDark
+                    ? "text-white"
+                    : "text-slate-900"
+                )}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
