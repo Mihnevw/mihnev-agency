@@ -124,7 +124,9 @@ export default function Navbar() {
             ? isDark
               ? "bg-slate-900/95 backdrop-blur-md shadow-lg"
               : "bg-white/95 backdrop-blur-md shadow-lg"
-            : "bg-transparent"
+            : isDark
+            ? "bg-transparent"
+            : "bg-white/80 backdrop-blur-sm"
         }`}
         style={{ top: isScrolled ? "0" : "40px" }}
         initial={{ y: -100 }}
@@ -161,13 +163,13 @@ export default function Navbar() {
                   onClick={() => handleNavigation(item.id, item.label)}
                   className={cn(
                     "font-medium transition-colors hover:text-emerald-600 dark:hover:text-emerald-400",
-                    isScrolled
-                      ? isDark
+                    isDark
+                      ? isScrolled
                         ? "text-slate-200"
-                        : "text-slate-900"
-                      : isDark
-                      ? "text-white"
-                      : "text-slate-900"
+                        : "text-white"
+                      : isScrolled
+                      ? "text-slate-900"
+                      : "text-slate-700"
                   )}
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}

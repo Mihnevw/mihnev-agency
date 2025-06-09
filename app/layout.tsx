@@ -77,7 +77,7 @@ export default function RootLayout({
         )}
       </head>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <AnalyticsProvider>
             <Suspense fallback={null}>
               {children}
