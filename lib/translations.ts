@@ -125,9 +125,9 @@ export const translations = {
   "Send Message": "Изпрати съобщение",
 
   // Metadata
-  "Professional Services | Expert Solutions for Your Business": "Професионални услуги | Експертни решения за вашия бизнес",
-  "Transform your business with our expert services. Get professional solutions tailored to your needs. Contact us for a free consultation.": "Трансформирайте бизнеса си с нашите експертни услуги. Получете професионални решения, съобразени с вашите нужди. Свържете се с нас за безплатна консултация.",
-  "professional services, business solutions, consulting, expert advice": "професионални услуги, бизнес решения, консултации, експертни съвети",
+  "Професионални услуги | Експертни решения за вашия бизнес.": "Professional Services | Expert Solutions for Your Business.",
+  "Трансформирайте бизнеса си с нашите експертни услуги. Получете професионални решения, съобразени с вашите нужди. Свържете се с нас за безплатна консултация.": "Transform your business with our expert services. Get professional solutions tailored to your needs. Contact us for a free consultation.",
+  "професионални услуги, бизнес решения, консултации, експертни съвети.": "professional services, business solutions, consulting, expert advice.",
 
   // Additional Pricing translations
   "Free": "Безплатно",

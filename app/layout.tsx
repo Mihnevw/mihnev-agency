@@ -12,15 +12,15 @@ import CookieConsent from "@/components/cookie-consent"
 const inter = Inter({ subsets: ["latin", "cyrillic"] })
 
 export const metadata: Metadata = {
-  title: translations["Professional Services | Expert Solutions for Your Business"],
-  description: translations["Transform your business with our expert services. Get professional solutions tailored to your needs. Contact us for a free consultation."],
-  keywords: translations["professional services, business solutions, consulting, expert advice"],
+  title: translations["Професионални услуги | Експертни решения за вашия бизнес."],
+  description: translations["Трансформирайте бизнеса си с нашите експертни услуги. Получете професионални решения, съобразени с вашите нужди. Свържете се с нас за безплатна консултация."],
+  keywords: translations["професионални услуги, бизнес решения, консултации, експертни съвети."],
   openGraph: {
-    title: translations["Professional Services | Expert Solutions for Your Business"],
-    description: translations["Transform your business with our expert services. Get professional solutions tailored to your needs. Contact us for a free consultation."],
+    title: translations["Професионални услуги | Експертни решения за вашия бизнес."],
+    description: translations["Трансформирайте бизнеса си с нашите експертни услуги. Получете професионални решения, съобразени с вашите нужди. Свържете се с нас за безплатна консултация."],
     type: "website",
   },
-    generator: 'v0.dev'
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({

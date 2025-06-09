@@ -10,13 +10,13 @@ import Footer from "@/components/footer"
 import SectionTracker from "@/components/section-tracker"
 
 export const metadata: Metadata = {
-  title: "Professional Services | Expert Solutions for Your Business",
+  title: "Професионални услуги | Експертни решения за вашия бизнес.",
   description:
-    "Transform your business with our expert services. Get professional solutions tailored to your needs. Contact us for a free consultation.",
-  keywords: "professional services, business solutions, consulting, expert advice",
+    "Трансформирайте бизнеса си с нашите експертни услуги. Получете професионални решения, съобразени с вашите нужди. Свържете се с нас за безплатна консултация.",
+  keywords: "професионални услуги, бизнес решения, консултации, експертни съвети.",
   openGraph: {
-    title: "Professional Services | Expert Solutions for Your Business",
-    description: "Transform your business with our expert services. Get professional solutions tailored to your needs.",
+    title: "Професионални услуги | Експертни решения за вашия бизнес.",
+    description: "Трансформирайте бизнеса си с нашите експертни услуги. Получете професионални решения, съобразени с вашите нужди. Свържете се с нас за безплатна консултация.",
     type: "website",
   },
 }
