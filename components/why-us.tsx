@@ -1,12 +1,17 @@
 "use client"
 
-import { Shield, Clock, Users, TrendingUp, Award, Headphones, Target, Zap } from "lucide-react"
+import { useState } from "react"
+import { Shield, Clock, Users, TrendingUp, Award, Headphones, Target, Zap, ChevronDown, ChevronUp } from "lucide-react"
 import { MotionWrapper, StaggerContainer, StaggerItem } from "@/components/motion-wrapper"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { useTranslation } from "@/lib/hooks/useTranslation"
+import { Button } from "@/components/ui/button"
 
 export default function WhyChooseUs() {
   const { t } = useTranslation()
+  const [isExpanded, setIsExpanded] = useState(false)
+  const initialVisibleItems = 4
+
   const reasons = [
     {
       icon: <Shield className="h-8 w-8" />,
@@ -74,6 +79,19 @@ export default function WhyChooseUs() {
     },
   ]
 
+  const getMobileVisibleReasons = () => {
+    return isExpanded ? reasons : reasons.slice(0, initialVisibleItems)
+  }
+
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded)
+    if (!isExpanded) {
+      setTimeout(() => {
+        document.getElementById("toggle-reasons")?.scrollIntoView({ behavior: "smooth", block: "center" })
+      }, 100)
+    }
+  }
+
   return (
     <section id="why-choose-us" className="py-20 bg-white dark:bg-slate-900 relative overflow-hidden">
       {/* Background Pattern */}
@@ -93,90 +111,220 @@ export default function WhyChooseUs() {
                 Защо да Изберете Нас?
               </h2>
               <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-                Открийте защо над 500 български компании се доверяват на нашия експертен опит и иновативни решения за
+                Открийте защо над 100 български компании се доверяват на нашия експертен опит и иновативни решения за
                 трансформация на техния бизнес.
               </p>
             </motion.div>
           </MotionWrapper>
 
-          {/* Reasons Grid */}
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {reasons.map((reason, index) => (
-              <StaggerItem key={index} direction="up">
-                <motion.div
-                  className={`${reason.bgColor} rounded-2xl p-6 lg:p-8 text-center h-full flex flex-col justify-center items-center space-y-4 border border-white/50 dark:border-slate-700/50 backdrop-blur-sm`}
-                  initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{
-                    duration: 0.6,
-                    delay: index * 0.1,
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 15,
-                  }}
-                  whileHover={{
-                    y: -8,
-                    scale: 1.03,
-                    transition: { type: "spring", stiffness: 300, damping: 20 },
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {/* Icon with Gradient Background */}
+          {/* Desktop Reasons Grid (md and up) */}
+          <div className="hidden md:block">
+            <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+              {reasons.map((reason, index) => (
+                <StaggerItem key={reason.title} direction="up">
                   <motion.div
-                    className={`w-16 h-16 lg:w-20 lg:h-20 rounded-2xl bg-gradient-to-br ${reason.color} flex items-center justify-center text-white shadow-lg`}
-                    initial={{ scale: 0, rotate: -180 }}
-                    whileInView={{ scale: 1, rotate: 0 }}
-                    viewport={{ once: true }}
+                    className={`${reason.bgColor} rounded-2xl p-6 lg:p-8 text-center h-full flex flex-col justify-center items-center space-y-4 border border-white/50 dark:border-slate-700/50 backdrop-blur-sm`}
+                    initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
                     transition={{
-                      duration: 0.8,
-                      delay: index * 0.1 + 0.2,
+                      duration: 0.6,
+                      delay: index * 0.1,
                       type: "spring",
-                      stiffness: 200,
+                      stiffness: 100,
                       damping: 15,
                     }}
                     whileHover={{
-                      rotate: 360,
-                      transition: { duration: 0.6, ease: "easeInOut" },
+                      y: -8,
+                      scale: 1.03,
+                      transition: { type: "spring", stiffness: 300, damping: 20 },
                     }}
+                    whileTap={{ scale: 0.98 }}
                   >
-                    {reason.icon}
+                    {/* Icon with Gradient Background */}
+                    <motion.div
+                      className={`w-16 h-16 lg:w-20 lg:h-20 rounded-2xl bg-gradient-to-br ${reason.color} flex items-center justify-center text-white shadow-lg`}
+                      initial={{ scale: 0, rotate: -180 }}
+                      whileInView={{ scale: 1, rotate: 0 }}
+                      viewport={{ once: true }}
+                      transition={{
+                        duration: 0.8,
+                        delay: index * 0.1 + 0.2,
+                        type: "spring",
+                        stiffness: 200,
+                        damping: 15,
+                      }}
+                      whileHover={{
+                        rotate: 360,
+                        transition: { duration: 0.6, ease: "easeInOut" },
+                      }}
+                    >
+                      {reason.icon}
+                    </motion.div>
+
+                    {/* Title */}
+                    <motion.h3
+                      className="text-xl lg:text-2xl font-bold text-slate-900 dark:text-white"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+                    >
+                      {reason.title}
+                    </motion.h3>
+
+                    {/* Message */}
+                    <motion.p
+                      className="text-slate-600 dark:text-slate-300 leading-relaxed text-center"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
+                    >
+                      {reason.message}
+                    </motion.p>
+
+                    {/* Decorative Element */}
+                    <motion.div
+                      className={`w-12 h-1 bg-gradient-to-r ${reason.color} rounded-full`}
+                      initial={{ width: 0, opacity: 0 }}
+                      whileInView={{ width: 48, opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: index * 0.1 + 0.5 }}
+                    />
                   </motion.div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
 
-                  {/* Title */}
-                  <motion.h3
-                    className="text-xl lg:text-2xl font-bold text-slate-900 dark:text-white"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
-                  >
-                    {reason.title}
-                  </motion.h3>
+          {/* Mobile Reasons Grid (below md) */}
+          <div className="md:hidden">
+            <StaggerContainer className="grid grid-cols-1 gap-6">
+              <AnimatePresence>
+                {getMobileVisibleReasons().map((reason, index) => (
+                  <StaggerItem key={reason.title} direction="up">
+                    <motion.div
+                      layout
+                      className={`${reason.bgColor} rounded-2xl p-6 text-center h-full flex flex-col justify-center items-center space-y-4 border border-white/50 dark:border-slate-700/50 backdrop-blur-sm`}
+                      initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 50, scale: 0.9 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{
+                        duration: 0.6,
+                        delay: index * 0.1,
+                        type: "spring",
+                        stiffness: 100,
+                        damping: 15,
+                      }}
+                      whileHover={{
+                        y: -8,
+                        scale: 1.03,
+                        transition: { type: "spring", stiffness: 300, damping: 20 },
+                      }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      {/* Icon with Gradient Background */}
+                      <motion.div
+                        className={`w-16 h-16 lg:w-20 lg:h-20 rounded-2xl bg-gradient-to-br ${reason.color} flex items-center justify-center text-white shadow-lg`}
+                        initial={{ scale: 0, rotate: -180 }}
+                        whileInView={{ scale: 1, rotate: 0 }}
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: 0.8,
+                          delay: index * 0.1 + 0.2,
+                          type: "spring",
+                          stiffness: 200,
+                          damping: 15,
+                        }}
+                        whileHover={{
+                          rotate: 360,
+                          transition: { duration: 0.6, ease: "easeInOut" },
+                        }}
+                      >
+                        {reason.icon}
+                      </motion.div>
 
-                  {/* Message */}
-                  <motion.p
-                    className="text-slate-600 dark:text-slate-300 leading-relaxed text-center"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
-                  >
-                    {reason.message}
-                  </motion.p>
+                      {/* Title */}
+                      <motion.h3
+                        className="text-xl lg:text-2xl font-bold text-slate-900 dark:text-white"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+                      >
+                        {reason.title}
+                      </motion.h3>
 
-                  {/* Decorative Element */}
-                  <motion.div
-                    className={`w-12 h-1 bg-gradient-to-r ${reason.color} rounded-full`}
-                    initial={{ width: 0, opacity: 0 }}
-                    whileInView={{ width: 48, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: index * 0.1 + 0.5 }}
-                  />
-                </motion.div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+                      {/* Message */}
+                      <motion.p
+                        className="text-slate-600 dark:text-slate-300 leading-relaxed text-center"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
+                      >
+                        {reason.message}
+                      </motion.p>
+
+                      {/* Decorative Element */}
+                      <motion.div
+                        className={`w-12 h-1 bg-gradient-to-r ${reason.color} rounded-full`}
+                        initial={{ width: 0, opacity: 0 }}
+                        whileInView={{ width: 48, opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: index * 0.1 + 0.5 }}
+                      />
+                    </motion.div>
+                  </StaggerItem>
+                ))}
+              </AnimatePresence>
+            </StaggerContainer>
+
+            {/* Mobile Toggle Button */}
+            <motion.div
+              id="toggle-reasons"
+              className="mt-8 flex justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ 
+                delay: 0.5,
+                duration: 0.6,
+                type: "spring",
+                stiffness: 100 
+              }}
+            >
+              <Button
+                onClick={toggleExpand}
+                variant="outline"
+                className="bg-white dark:bg-slate-800 border-emerald-200 dark:border-emerald-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 font-medium px-8 py-3 rounded-xl shadow-lg transition-all duration-300 flex items-center gap-2 hover:scale-105 hover:shadow-emerald-100 dark:hover:shadow-emerald-900/20"
+              >
+                <motion.span
+                  className="flex items-center gap-2"
+                  initial={false}
+                  animate={{ 
+                    y: isExpanded ? [0, -2, 0] : [0, 2, 0],
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  {isExpanded ? (
+                    <>
+                      Скрий всички <ChevronUp className="h-5 w-5" />
+                    </>
+                  ) : (
+                    <>
+                      Виж всички <ChevronDown className="h-5 w-5" />
+                    </>
+                  )}
+                </motion.span>
+              </Button>
+            </motion.div>
+          </div>
 
           {/* Bottom CTA */}
           <MotionWrapper direction="up" delay={0.8} className="text-center mt-16">
