@@ -14,6 +14,8 @@ import { useRouter, usePathname } from "next/navigation"
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
   const { theme } = useTheme()
   const isDark = theme !== "light"
   const router = useRouter()
@@ -21,32 +23,71 @@ export default function Navbar() {
   const isHome = pathname === "/"
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
+    const controlNavbar = () => {
+      const currentScrollY = window.scrollY
+
+      // Always show navbar at the top
+      if (currentScrollY < 10) {
+        setIsVisible(true)
+        setIsScrolled(false)
+      } else {
+        setIsScrolled(true)
+        // Hide when scrolling down, show when scrolling up
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          setIsVisible(false)
+        } else {
+          setIsVisible(true)
+        }
+      }
+
+      setLastScrollY(currentScrollY)
     }
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", controlNavbar)
+    return () => window.removeEventListener("scroll", controlNavbar)
+  }, [lastScrollY])
+
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId)
+    if (section) {
+      // Calculate offset based on navbar height and top bar
+      const navbarHeight = isScrolled ? 64 : 96 // 96px when scrolled (24px * 4), 136px when not scrolled (includes top bar)
+      const sectionPosition = section.offsetTop - navbarHeight
+
+      window.scrollTo({
+        top: sectionPosition,
+        behavior: "smooth"
+      })
+    }
+  }
 
   const handleNavigation = (sectionId: string, sectionName: string) => {
     trackButtonClick(`nav_${sectionName}`, "navbar")
+
+    // Close mobile menu first
+    setIsOpen(false)
+
     if (isHome) {
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" })
+      // Add a small delay to allow the mobile menu to close smoothly
+      setTimeout(() => {
+        scrollToSection(sectionId)
+      }, 100)
     } else {
       router.push(`/#${sectionId}`)
     }
-    setIsOpen(false)
   }
 
   const handleCTAClick = () => {
     trackCTAClick("Get Started", "navbar")
+    setIsOpen(false)
+
     if (isHome) {
-      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+      setTimeout(() => {
+        scrollToSection("contact")
+      }, 100)
     } else {
       router.push("/#contact")
     }
-    setIsOpen(false)
   }
 
   const handlePhoneClick = () => {
@@ -70,10 +111,12 @@ export default function Navbar() {
     <>
       {/* Top Bar */}
       <motion.div
-        className="bg-emerald-600 dark:bg-emerald-800 text-white py-3 px-4 text-sm"
-        initial={{ y: -40, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="bg-emerald-600 dark:bg-emerald-800 text-white py-2 px-4 text-xs fixed w-full z-50"
+        initial={{ y: -40 }}
+        animate={{
+          y: isVisible ? 0 : -100
+        }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
       >
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center gap-6">
@@ -88,7 +131,7 @@ export default function Navbar() {
                 onClick={handlePhoneClick}
                 className="hover:text-emerald-200 transition-colors"
               >
-                +359 888888888
+                +359 882851151
               </a>
             </motion.div>
             <motion.div
@@ -119,22 +162,22 @@ export default function Navbar() {
 
       {/* Main Navbar */}
       <motion.nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
+        className={`fixed left-0 right-0 z-40 ${isScrolled
             ? isDark
               ? "bg-slate-900/95 backdrop-blur-md shadow-lg"
               : "bg-white/95 backdrop-blur-md shadow-lg"
             : isDark
-            ? "bg-transparent"
-            : "bg-white/80 backdrop-blur-sm"
-        }`}
-        style={{ top: isScrolled ? "0" : "40px" }}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+              ? "bg-transparent"
+              : "bg-white/80 backdrop-blur-sm"
+          }`}
+                style={{ 
+          top: isScrolled ? "20px" : "20px",
+          transform: `translateY(${isVisible ? "0" : "-150%"})`,
+          transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)"
+        }}
       >
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-24">
             {/* Logo */}
             <motion.div
               className="flex-shrink-0"
@@ -168,8 +211,8 @@ export default function Navbar() {
                         ? "text-slate-200"
                         : "text-white"
                       : isScrolled
-                      ? "text-slate-900"
-                      : "text-slate-700"
+                        ? "text-slate-900"
+                        : "text-slate-700"
                   )}
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
@@ -216,8 +259,8 @@ export default function Navbar() {
                       ? "text-white"
                       : "text-slate-900"
                     : isDark
-                    ? "text-white"
-                    : "text-slate-900"
+                      ? "text-white"
+                      : "text-slate-900"
                 )}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
@@ -322,8 +365,8 @@ export default function Navbar() {
         </AnimatePresence>
       </motion.nav>
 
-      {/* Spacer to prevent content from hiding behind fixed navbar */}
-      <div className="h-14"></div>
+      {/* Spacer */}
+      <div className="h-28"></div>
     </>
   )
 }
