@@ -20,7 +20,10 @@ export const metadata: Metadata = {
     description: translations["Трансформирайте бизнеса си с нашите експертни услуги. Получете професионални решения, съобразени с вашите нужди. Свържете се с нас за безплатна консултация."],
     type: "website",
   },
-  generator: 'v0.dev'
+  generator: 'v0.dev',
+  icons: {
+    icon: '/favicon.png',
+  },
 }
 
 export default function RootLayout({
