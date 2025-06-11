@@ -102,8 +102,8 @@ export default function Navbar() {
     { name: "Начало", id: "hero", label: "home" },
     { name: "За нас", id: "about", label: "about" },
     { name: "Услуги", id: "services", label: "services" },
-    { name: "Отзиви", id: "reviews", label: "reviews" },
     { name: "Защо нас", id: "why-choose-us", label: "why-choose-us" },
+    { name: "Отзиви", id: "reviews", label: "reviews" },
     { name: "Контакт", id: "contact", label: "contact" },
   ]
 
