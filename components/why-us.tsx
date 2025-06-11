@@ -16,7 +16,7 @@ export default function WhyChooseUs() {
     {
       icon: <Shield className="h-8 w-8" />,
       title: "Доказан Опит",
-      message: "Над 500 успешни проекта с измерими резултати и дългосрочни партньорства с водещи български компании.",
+      // message: "Над 100+ успешни проекта с измерими резултати и дългосрочни партньорства с водещи български компании.",
       color: "from-emerald-500 to-teal-600",
       bgColor: "bg-emerald-50 dark:bg-emerald-900/20",
       iconColor: "text-emerald-600 dark:text-emerald-400",
@@ -24,7 +24,7 @@ export default function WhyChooseUs() {
     {
       icon: <Clock className="h-8 w-8" />,
       title: "Бързи Резултати",
-      message: "Виждате първите подобрения в рамките на 30 дни, с пълна трансформация за 3-6 месеца.",
+      // message: "Виждате първите подобрения в рамките на 30 дни, с пълна трансформация за 3-6 месеца.",
       color: "from-blue-500 to-indigo-600",
       bgColor: "bg-blue-50 dark:bg-blue-900/20",
       iconColor: "text-blue-600 dark:text-blue-400",
@@ -32,7 +32,7 @@ export default function WhyChooseUs() {
     {
       icon: <Users className="h-8 w-8" />,
       title: "Експертен Екип",
-      message: "Работим с най-добрите специалисти в България с международен опит и сертификации.",
+      // message: "Работим с най-добрите специалисти в България с международен опит и сертификации.",
       color: "from-purple-500 to-violet-600",
       bgColor: "bg-purple-50 dark:bg-purple-900/20",
       iconColor: "text-purple-600 dark:text-purple-400",
@@ -40,7 +40,7 @@ export default function WhyChooseUs() {
     {
       icon: <TrendingUp className="h-8 w-8" />,
       title: "Гарантиран Растеж",
-      message: "Средно 200% увеличение на ефективността и приходите в първата година от сътрудничеството.",
+      // message: "Средно 50% увеличение на ефективността и приходите в първата година от сътрудничеството.",
       color: "from-orange-500 to-red-600",
       bgColor: "bg-orange-50 dark:bg-orange-900/20",
       iconColor: "text-orange-600 dark:text-orange-400",
@@ -48,7 +48,7 @@ export default function WhyChooseUs() {
     {
       icon: <Award className="h-8 w-8" />,
       title: "Качество и Стандарти",
-      message: "ISO сертифицирани процеси и международни стандарти за качество, адаптирани за българския пазар.",
+      // message: "ISO сертифицирани процеси и международни стандарти за качество, адаптирани за българския пазар.",
       color: "from-yellow-500 to-amber-600",
       bgColor: "bg-yellow-50 dark:bg-yellow-900/20",
       iconColor: "text-yellow-600 dark:text-yellow-400",
@@ -56,7 +56,7 @@ export default function WhyChooseUs() {
     {
       icon: <Headphones className="h-8 w-8" />,
       title: "24/7 Поддръжка",
-      message: "Непрекъсната поддръжка на български език с гарантирано време за отговор под 4 часа.",
+      // message: "Непрекъсната поддръжка на български език с гарантирано време за отговор под 4 часа.",
       color: "from-pink-500 to-rose-600",
       bgColor: "bg-pink-50 dark:bg-pink-900/20",
       iconColor: "text-pink-600 dark:text-pink-400",
@@ -64,7 +64,7 @@ export default function WhyChooseUs() {
     {
       icon: <Target className="h-8 w-8" />,
       title: "Персонализиран Подход",
-      message: "Всяко решение е създадено специално за вашия бизнес и индустрия с фокус върху вашите цели.",
+      // message: "Всяко решение е създадено специално за вашия бизнес и индустрия с фокус върху вашите цели.",
       color: "from-cyan-500 to-blue-600",
       bgColor: "bg-cyan-50 dark:bg-cyan-900/20",
       iconColor: "text-cyan-600 dark:text-cyan-400",
@@ -72,7 +72,7 @@ export default function WhyChooseUs() {
     {
       icon: <Zap className="h-8 w-8" />,
       title: "Иновативни Технологии",
-      message: "Използваме най-новите технологии и методологии за максимална ефективност и конкурентно предимство.",
+      // message: "Използваме най-новите технологии и методологии за максимална ефективност и конкурентно предимство.",
       color: "from-indigo-500 to-purple-600",
       bgColor: "bg-indigo-50 dark:bg-indigo-900/20",
       iconColor: "text-indigo-600 dark:text-indigo-400",
@@ -174,7 +174,7 @@ export default function WhyChooseUs() {
                     </motion.h3>
 
                     {/* Message */}
-                    <motion.p
+                    {/* <motion.p
                       className="text-slate-600 dark:text-slate-300 leading-relaxed text-center"
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -182,7 +182,7 @@ export default function WhyChooseUs() {
                       transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
                     >
                       {reason.message}
-                    </motion.p>
+                    </motion.p> */}
 
                     {/* Decorative Element */}
                     <motion.div
@@ -258,7 +258,7 @@ export default function WhyChooseUs() {
                       </motion.h3>
 
                       {/* Message */}
-                      <motion.p
+                      {/* <motion.p
                         className="text-slate-600 dark:text-slate-300 leading-relaxed text-center"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -266,7 +266,7 @@ export default function WhyChooseUs() {
                         transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
                       >
                         {reason.message}
-                      </motion.p>
+                      </motion.p> */}
 
                       {/* Decorative Element */}
                       <motion.div

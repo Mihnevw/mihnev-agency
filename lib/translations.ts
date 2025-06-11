@@ -125,7 +125,7 @@ export const translations = {
   "Send Message": "Изпрати съобщение",
 
   // Metadata
-  "Професионални услуги | Експертни решения за вашия бизнес.": "Professional Services | Expert Solutions for Your Business.",
+  "Mihnev Agency | Експертни решения за вашия бизнес.": "Professional Services | Expert Solutions for Your Business.",
   "Трансформирайте бизнеса си с нашите експертни услуги. Получете професионални решения, съобразени с вашите нужди. Свържете се с нас за безплатна консултация.": "Transform your business with our expert services. Get professional solutions tailored to your needs. Contact us for a free consultation.",
   "професионални услуги, бизнес решения, консултации, експертни съвети.": "professional services, business solutions, consulting, expert advice.",
 
@@ -134,7 +134,7 @@ export const translations = {
 
   // Website Development Page
   "We create custom websites tailored to your specific needs. Choose from our range of specialized website types or contact us for a custom solution.": "Създаваме персонализирани уебсайтове, съобразени с вашите специфични нужди. Изберете от нашите специализирани видове уебсайтове или се свържете с нас за персонализирано решение.",
-  "Website Types": "Видове уебсайтове",
+  "Website Types": "Видове Уебсайтове",
   "Make an Inquiry": "Направете запитване",
 
   // Website Types
@@ -201,7 +201,7 @@ export const translations = {
   "Member directory": "Директория на членовете",
 
   // Software Solutions Page
-  "Solution Types": "Видове решения",
+  "Solution Types": "Видове Софтуери",
 
   // Software Types
   "Custom Business Software": "Персонализиран бизнес софтуер",
