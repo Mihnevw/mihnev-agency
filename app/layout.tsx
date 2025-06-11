@@ -12,11 +12,11 @@ import CookieConsent from "@/components/cookie-consent"
 const inter = Inter({ subsets: ["latin", "cyrillic"] })
 
 export const metadata: Metadata = {
-  title: translations["Професионални услуги | Експертни решения за вашия бизнес."],
+  title: translations["Mihnev Agency | Експертни решения за вашия бизнес."],
   description: translations["Трансформирайте бизнеса си с нашите експертни услуги. Получете професионални решения, съобразени с вашите нужди. Свържете се с нас за безплатна консултация."],
   keywords: translations["професионални услуги, бизнес решения, консултации, експертни съвети."],
   openGraph: {
-    title: translations["Професионални услуги | Експертни решения за вашия бизнес."],
+    title: translations["Mihnev Agency | Експертни решения за вашия бизнес."],
     description: translations["Трансформирайте бизнеса си с нашите експертни услуги. Получете професионални решения, съобразени с вашите нужди. Свържете се с нас за безплатна консултация."],
     type: "website",
   },
@@ -77,7 +77,7 @@ export default function RootLayout({
         )}
       </head>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={true}>
           <AnalyticsProvider>
             <Suspense fallback={null}>
               {children}
