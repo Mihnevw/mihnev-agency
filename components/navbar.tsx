@@ -10,6 +10,7 @@ import { useTheme } from "next-themes"
 import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { useRouter, usePathname } from "next/navigation"
+import Image from "next/image"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -122,7 +123,7 @@ export default function Navbar() {
           <div className="flex items-center gap-6">
             <motion.div
               className="flex items-center gap-2"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               <Phone className="h-4 w-4" />
@@ -163,14 +164,14 @@ export default function Navbar() {
       {/* Main Navbar */}
       <motion.nav
         className={`fixed left-0 right-0 z-40 ${isScrolled
-            ? isDark
-              ? "bg-slate-900/95 backdrop-blur-md shadow-lg"
-              : "bg-white/95 backdrop-blur-md shadow-lg"
-            : isDark
-              ? "bg-transparent"
-              : "bg-white/80 backdrop-blur-sm"
+          ? isDark
+            ? "bg-slate-900/95 backdrop-blur-md shadow-lg"
+            : "bg-white/95 backdrop-blur-md shadow-lg"
+          : isDark
+            ? "bg-transparent"
+            : "bg-white/80 backdrop-blur-sm"
           }`}
-                style={{ 
+        style={{
           top: isScrolled ? "20px" : "20px",
           transform: `translateY(${isVisible ? "0" : "-150%"})`,
           transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)"
@@ -181,20 +182,38 @@ export default function Navbar() {
             {/* Logo */}
             <motion.div
               className="flex-shrink-0"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               <Link href="/" className="flex items-center gap-2">
                 <motion.div
-                  className="w-8 h-8 bg-emerald-600 dark:bg-emerald-500 rounded-lg flex items-center justify-center"
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  initial="hidden"
+                  animate="visible"
+                  variants={{
+                    hidden: { opacity: 0, scale: 0.8 },
+                    visible: { opacity: 1, scale: 1 }
+                  }}
+                  transition={{
+                    duration: 0.3,
+                    ease: [0, 0.71, 0.2, 1.01],
+                    scale: {
+                      type: "spring",
+                      damping: 5,
+                      stiffness: 100,
+                      restDelta: 0.001
+                    }
+                  }}
                 >
-                  <span className="text-white font-bold text-lg">S</span>
+                  <Image
+                    src="/mihnev-logo.png"
+                    alt="Mihnev Agency Logo"
+                    width={512}
+                    height={512}
+                    className="h-60 w-60 object-contain"
+                    style={{ filter: 'invert(41%) sepia(94%) saturate(747%) hue-rotate(116deg) brightness(93%) contrast(92%)' }}
+                    priority
+                  />
                 </motion.div>
-                <span className={cn("font-bold text-xl", isDark ? "text-white" : "text-slate-900")}>
-                  Mihnev Agency
-                </span>
               </Link>
             </motion.div>
 
