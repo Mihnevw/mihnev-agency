@@ -133,7 +133,7 @@ export default function About() {
                       labelClassName="text-slate-600 dark:text-slate-300"
                     />
                     <AnimatedNumberWithLabel
-                      end={500}
+                      end={100}
                       label={t("Projects Completed")}
                       suffix="+"
                       duration={2.5}

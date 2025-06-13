@@ -97,7 +97,7 @@ export default function Footer() {
                   className="flex items-center gap-2 text-slate-300 hover:text-emerald-400 transition-colors"
                 >
                   <Phone className="h-4 w-4 text-emerald-400" />
-                  <span className="text-sm">+359 888888888</span>
+                  <span className="text-sm">+359 882851151</span>
                 </a>
               </div>
             </div>
