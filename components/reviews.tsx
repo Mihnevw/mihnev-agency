@@ -61,7 +61,7 @@ export default function Reviews() {
       avatar: "/girl-3.jpg?height=80&width=80",
       rating: 5,
       text: "Изключително професионален подход и впечатляващи резултати. Те ни помогнаха да удвоим нашите продажби за по-малко от година. Определено ще продължим сътрудничеството.",
-      growthPercentage: 120,
+      growthPercentage: 100,
       company: "БрандПро",
       industry: "Маркетинг",
     },
@@ -308,7 +308,7 @@ export default function Reviews() {
             </div>
 
             {/* Auto-play indicator */}
-            <div className="flex justify-center mt-4">
+            {/* <div className="flex justify-center mt-4">
               <button
                 onClick={() => {
                   // Only allow enabling auto-play if we're not at the end
@@ -321,7 +321,7 @@ export default function Reviews() {
               >
                 {isAutoPlaying ? "⏸️ Пауза" : "▶️ Автоматично"}
               </button>
-            </div>
+            </div> */}
           </div>
 
           {/* Stats */}
