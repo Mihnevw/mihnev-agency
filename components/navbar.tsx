@@ -12,16 +12,33 @@ import { cn } from "@/lib/utils"
 import { useRouter, usePathname } from "next/navigation"
 import Image from "next/image"
 
+const navItems = [
+  { name: "Начало", id: "hero", label: "home" },
+  { name: "За нас", id: "about", label: "about" },
+  { name: "Услуги", id: "services", label: "services" },
+  { name: "Защо нас", id: "why-choose-us", label: "why-choose-us" },
+  { name: "Отзиви", id: "reviews", label: "reviews" },
+  { name: "Контакт", id: "contact", label: "contact" },
+]
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isVisible, setIsVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
-  const { theme } = useTheme()
-  const isDark = theme !== "light"
+  const [mounted, setMounted] = useState(false)
+  const { theme, systemTheme, resolvedTheme } = useTheme()
   const router = useRouter()
   const pathname = usePathname()
   const isHome = pathname === "/"
+
+  // Handle mounting
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  // Determine theme after mounting to avoid hydration mismatch
+  const isDark = resolvedTheme === "dark"
 
   useEffect(() => {
     const controlNavbar = () => {
@@ -47,6 +64,44 @@ export default function Navbar() {
     window.addEventListener("scroll", controlNavbar)
     return () => window.removeEventListener("scroll", controlNavbar)
   }, [lastScrollY])
+
+  // Return a transparent navbar initially
+  if (!mounted) {
+    return (
+      <nav className="fixed left-0 right-0 z-40 bg-transparent" style={{ top: "20px" }}>
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-24">
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              <Link href="/" className="flex items-center gap-2">
+                <Image
+                  src="/mihnev-logo.png"
+                  alt="Mihnev Agency Logo"
+                  width={512}
+                  height={512}
+                  className="h-60 w-60 object-contain"
+                  style={{ filter: 'invert(41%) sepia(94%) saturate(747%) hue-rotate(116deg) brightness(93%) contrast(92%)' }}
+                  priority
+                />
+              </Link>
+            </div>
+
+            {/* Desktop Navigation - Hidden initially */}
+            <div className="hidden md:flex items-center space-x-8 opacity-0">
+              {navItems.map((item) => (
+                <button
+                  key={item.name}
+                  className="font-medium transition-colors text-transparent"
+                >
+                  {item.name}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </nav>
+    )
+  }
 
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId)
@@ -98,15 +153,6 @@ export default function Navbar() {
   const handleEmailClick = () => {
     trackButtonClick("email_click", "navbar")
   }
-
-  const navItems = [
-    { name: "Начало", id: "hero", label: "home" },
-    { name: "За нас", id: "about", label: "about" },
-    { name: "Услуги", id: "services", label: "services" },
-    { name: "Защо нас", id: "why-choose-us", label: "why-choose-us" },
-    { name: "Отзиви", id: "reviews", label: "reviews" },
-    { name: "Контакт", id: "contact", label: "contact" },
-  ]
 
   return (
     <>
@@ -163,14 +209,16 @@ export default function Navbar() {
 
       {/* Main Navbar */}
       <motion.nav
-        className={`fixed left-0 right-0 z-40 ${isScrolled
-          ? isDark
-            ? "bg-slate-900/95 backdrop-blur-md shadow-lg"
-            : "bg-white/95 backdrop-blur-md shadow-lg"
-          : isDark
-            ? "bg-transparent"
-            : "bg-white/80 backdrop-blur-sm"
-          }`}
+        className={cn(
+          "fixed left-0 right-0 z-40",
+          isScrolled
+            ? isDark
+              ? "bg-slate-900/95 backdrop-blur-md shadow-lg"
+              : "bg-white/95 backdrop-blur-md shadow-lg"
+            : isDark
+              ? "bg-transparent"
+              : "bg-white/80 backdrop-blur-sm"
+        )}
         style={{
           top: isScrolled ? "20px" : "20px",
           transform: `translateY(${isVisible ? "0" : "-150%"})`,
@@ -209,7 +257,7 @@ export default function Navbar() {
                     alt="Mihnev Agency Logo"
                     width={512}
                     height={512}
-                    className="h-60 w-60 object-contain"
+                    className="h-52 w-52 object-contain"
                     style={{ filter: 'invert(41%) sepia(94%) saturate(747%) hue-rotate(116deg) brightness(93%) contrast(92%)' }}
                     priority
                   />
@@ -224,8 +272,8 @@ export default function Navbar() {
                   key={item.name}
                   onClick={() => handleNavigation(item.id, item.label)}
                   className={cn(
-                    "font-medium transition-colors hover:text-emerald-600 dark:hover:text-emerald-400",
-                    isDark
+                    "font-medium transition-colors hover:text-emerald-600",
+                    mounted && isDark
                       ? isScrolled
                         ? "text-slate-200"
                         : "text-white"
