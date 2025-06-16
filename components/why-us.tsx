@@ -55,7 +55,7 @@ export default function WhyChooseUs() {
     },
     {
       icon: <Headphones className="h-8 w-8" />,
-      title: "24/7 Поддръжка",
+      title: "Поддръжка",
       // message: "Непрекъсната поддръжка на български език с гарантирано време за отговор под 4 часа.",
       color: "from-pink-500 to-rose-600",
       bgColor: "bg-pink-50 dark:bg-pink-900/20",
