@@ -8,6 +8,7 @@ import Script from "next/script"
 import { Suspense } from "react"
 import { translations } from "@/lib/translations"
 import CookieConsent from "@/components/cookie-consent"
+import CrispChat from "@/components/crisp-chat"
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] })
 
@@ -66,13 +67,17 @@ export default function RootLayout({
             `}
           </Script>
         )}
+
+        <link rel="preconnect" href="https://client.crisp.chat" crossOrigin="anonymous" />
+        <link rel="preload" href="https://client.crisp.chat/l.js" as="script" />
       </head>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={true}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <AnalyticsProvider>
             <Suspense fallback={null}>
               {children}
               <CookieConsent />
+              <CrispChat />
             </Suspense>
           </AnalyticsProvider>
         </ThemeProvider>
