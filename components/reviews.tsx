@@ -6,13 +6,12 @@ import { MotionWrapper } from "@/components/motion-wrapper"
 import { AnimatedNumberWithLabel, AnimatedPercentage } from "@/components/animated-counter"
 import { motion } from "framer-motion"
 import { useTranslation } from "@/lib/hooks/useTranslation"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 
 export default function Reviews() {
   const { t } = useTranslation()
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
 
   const reviews = [
     {
@@ -104,41 +103,20 @@ export default function Reviews() {
     },
   ]
 
-  // Auto-play functionality
-  useEffect(() => {
-    if (!isAutoPlaying) return
-
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => {
-        // Stop auto-play if we reach the last valid position
-        if (prev >= reviews.length - 3) {
-          setIsAutoPlaying(false)
-          return prev
-        }
-        return (prev + 1) % (reviews.length - 2)
-      })
-    }, 5000) // Change slide every 5 seconds
-
-    return () => clearInterval(interval)
-  }, [isAutoPlaying, reviews.length])
-
   const nextSlide = () => {
     if (currentIndex < reviews.length - 3) {
       setCurrentIndex((prev) => prev + 1)
-      setIsAutoPlaying(false)
     }
   }
 
   const prevSlide = () => {
     if (currentIndex > 0) {
       setCurrentIndex((prev) => prev - 1)
-      setIsAutoPlaying(false)
     }
   }
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index)
-    setIsAutoPlaying(false)
   }
 
   // Calculate visible reviews (show 3 at a time on desktop, 1 on mobile)
@@ -306,22 +284,6 @@ export default function Reviews() {
                 />
               ))}
             </div>
-
-            {/* Auto-play indicator */}
-            {/* <div className="flex justify-center mt-4">
-              <button
-                onClick={() => {
-                  // Only allow enabling auto-play if we're not at the end
-                  if (!isAutoPlaying && currentIndex >= reviews.length - 3) {
-                    setCurrentIndex(0)
-                  }
-                  setIsAutoPlaying(!isAutoPlaying)
-                }}
-                className="text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
-              >
-                {isAutoPlaying ? "⏸️ Пауза" : "▶️ Автоматично"}
-              </button>
-            </div> */}
           </div>
 
           {/* Stats */}
