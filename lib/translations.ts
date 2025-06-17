@@ -35,8 +35,8 @@ export const translations = {
   "We specialize in creating powerful websites, applications, and software solutions that help small and medium-sized businesses thrive in the digital age.": "Специализирани сме в създаването на мощни уебсайтове, приложения и софтуерни решения, които помагат на малките и средни бизнеси да процъфтяват в дигиталната ера.",
   "Web Development": "Разработка на уебсайтове",
   "Custom websites and web applications tailored to your business needs and growth goals.": "Персонализирани уебсайтове и уеб приложения, съобразени с нуждите на вашия бизнес и целите за растеж.",
-  "Software Solutions": "Софтуерни решения",
-  "We develop custom software solutions that automate processes, improve efficiency, and drive business growth. Explore our range of software services or contact us for a tailored solution.": "Разработваме персонализирани софтуерни решения, които автоматизират процесите, подобряват ефективността и стимулират бизнес растежа. Разгледайте нашите софтуерни услуги или се свържете с нас за персонализирано решение.",
+  "Software Solutions": "Изработка на софтуер",
+  "We develop custom software solutions that automate processes, improve efficiency, and drive business growth. Explore our range of software services or contact us for a tailored solution.": "Разработваме персонализирани софтуери, които автоматизират процесите, подобряват ефективността и стимулират бизнес растежа. Разгледайте, някои от нашите софтуери или се свържете с нас за персонализирано решение.",
   "Digital strategies and tools that help small and medium businesses reach their full potential.": "Дигитални стратегии и инструменти, които помагат на малките и средни предприятия да достигнат пълния си потенциал.",
   "Proven success with 500+ websites and applications delivered": "Доказан успех с над 100 доставени уебсайта и приложения",
   "Specialized in helping SMBs achieve digital growth": "Специализирани в подпомагането на МСП да постигнат дигитален растеж",
@@ -54,7 +54,7 @@ export const translations = {
   "Happy Clients": "Доволни клиенти",
   "Satisfaction Rate": "Ниво на удовлетвореност",
   "Average ROI": "Среден ROI",
-  "Support Available": "Налична поддръжка",
+  "Support Available": "Фокус върху резултатите",
 
   // Pricing section
   "Investment Options": "Инвестиционни опции",
@@ -272,15 +272,15 @@ export const translations = {
   "Export capabilities": "Възможности за експорт",
 
   // Business Growth Page
-  "We help small and medium-sized businesses achieve sustainable growth through digital transformation and innovative strategies. Discover our growth solutions or contact us for a personalized strategy.": "Помагаме на малките и средни предприятия да постигнат устойчив растеж чрез дигитална трансформация и иновативни стратегии. Разгледайте нашите решения за растеж или се свържете с нас за персонализирана стратегия.",
+  "We help small and medium-sized businesses achieve sustainable growth through digital transformation and innovative strategies. Discover our growth solutions or contact us for a personalized strategy.": "Помагаме на малките и средни бизнеси да постигнат устойчив растеж чрез дигитална трансформация и иновативни стратегии. Разгледайте, някои от нашите решения за растеж или се свържете с нас за персонализирана стратегия.",
   "Growth Strategies": "Стратегии за растеж",
 
   // Growth Strategy Types
   "Digital Strategy": "Дигитална стратегия",
   "Comprehensive digital transformation strategy to modernize your business operations.": "Цялостна стратегия за дигитална трансформация за модернизиране на вашите бизнес операции.",
-  "Marketing Automation": "Маркетинг автоматизация",
+  "Marketing Automation": "Реклама в социалните мрежи",
   "Automated marketing solutions to reach and engage your target audience effectively.": "Автоматизирани маркетинг решения за ефективно достигане и ангажиране на вашата целева аудитория.",
-  "Customer Experience": "Клиентско изживяване",
+  "Customer Experience": "Google реклама",
   "Enhanced customer experience strategies to improve satisfaction and retention.": "Подобрени стратегии за клиентско изживяване за повишаване на удовлетвореността и задържането.",
   "Business Intelligence": "Бизнес анализи",
   "Data-driven insights to make informed business decisions and identify growth opportunities.": "Анализи, базирани на данни, за вземане на информирани бизнес решения и идентифициране на възможности за растеж.",
@@ -334,6 +334,20 @@ export const translations = {
   "Scalable software solutions that automate processes and boost your business efficiency.": "Мащабируеми софтуерни решения, които автоматизират процесите и повишават ефективността на вашия бизнес.",
   "Website Development": "Изработка на уебсайтове",
   "Learn More": "Научете повече",
+  "Preparation and Planning": "Подготовка и планиране за успешното създаване на бизнес софтуер",
+  "Business Analysis": "Целите на софтуера",
+  "Deep dive into your business model, goals, and current challenges to identify opportunities.": "Успешният софтуерен проект започва с ясно определени бизнес цели. Определете какви резултати искате да постигнете и как софтуерът може да подпомогне тяхното реализиране.",
+  "Requirements Gathering": "Работни процеси",
+  "Document detailed functional and technical requirements for your custom solution.": "Очертава всеки етап от работния процес – от първия контакт с клиента до приключване на сделката. Така създава стабилна основа за бъдеща автоматизация и ефективна интеграция на системите.",
+  "Solution Design": "Фокус върху оптимизацията",
+  "Create a detailed design document that outlines the features, architecture, and implementation plan for your custom solution.": "Разгледайте как модулите ще си взаимодействат, какви типове данни ще обработват и по какъв начин софтуерът ще подпомага управлението на ресурси, информация и процеси.",
+  "Development": "Разработка",
+  "Build your custom solution using the latest technologies and best practices.": "Изградете вашето персонализирано решение, използвайки последните технологии и най-добрите практики.",
+  "Testing and Deployment": "Тестване и Деплой",
+  "Project Planning": "Планиране на проекта",
+  "Develop detailed timeline, milestones, and resource allocation for successful delivery.": "Разработете подробен график, етапи и разпределение на ресурсите за успешен завършек.",
+  "Ready to Accelerate Your Business Growth?": "Готови ли сте да ускорите растежа на вашия бизнес?",
+  "Contact us today for a free growth consultation and discover how we can help your business reach new heights.": "Свържете се с нас днес за безплатна консултация за растеж и открийте как можем да помогнем на вашия бизнес да достигне нови върхове.",
 
   // Footer translations
   "Footer Description": "Ние сме посветени на това да помагаме на бизнесите да постигат изключителен растеж чрез експертни консултации, стратегическо планиране и иновативни решения.",
@@ -346,5 +360,5 @@ export const translations = {
   "Privacy Policy": "Политика за поверителност",
   "Terms of Service": "Общи условия",
   "GDPR Compliance": "GDPR Съответствие",
-  "All rights reserved": "Всички права запазени"
+  "All rights reserved": "Всички права запазени",
 }; 
