@@ -61,7 +61,7 @@ export default function Portfolio() {
                   <motion.div
                     className="mb-6"
                     whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                    transition={{ duration: 0 }}
                   >
                     {service.icon}
                   </motion.div>
