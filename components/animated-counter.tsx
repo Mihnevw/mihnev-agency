@@ -112,23 +112,28 @@ export function AnimatedPercentage({
 }: AnimatedPercentageProps) {
   const [isInView, setIsInView] = useState(false)
   const percentageRef = useRef<HTMLDivElement>(null)
+  const observerRef = useRef<IntersectionObserver | null>(null)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    if (!percentageRef.current) return;
+
+    observerRef.current = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) {
+        if (entries[0].isIntersecting && !isInView) {
           setIsInView(true)
         }
       },
       { threshold: 0.2 }
     )
 
-    if (percentageRef.current) {
-      observer.observe(percentageRef.current)
-    }
+    observerRef.current.observe(percentageRef.current)
 
-    return () => observer.disconnect()
-  }, [])
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect()
+      }
+    }
+  }, [isInView])
 
   return (
     <div ref={percentageRef} className="flex items-center gap-4">
