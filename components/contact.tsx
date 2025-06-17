@@ -138,7 +138,7 @@ export default function Contact() {
 						<div className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
 							{t("Get in touch today for a free consultation. We'll discuss your goals and create a custom strategy to help you achieve exceptional results. Our clients see an average of")}{" "}
 							<span className="text-emerald-600 dark:text-emerald-400 font-semibold inline-flex items-center gap-2">
-								<AnimatedPercentage end={80} duration={2} delay={0.5} /> {t("growth")}
+								<AnimatedPercentage end={90} duration={2} delay={0.5} /> {t("growth")}
 							</span>{" "}
 							{t("within the first year.")}
 						</div>
@@ -217,7 +217,7 @@ export default function Contact() {
 											htmlFor="phone"
 											className="block text-sm font-medium text-slate-900 dark:text-white mb-2"
 										>
-											{t("Phone Number")}
+											{t("Phone Number")} *
 										</label>
 										<div className="relative">
 											<Input
@@ -229,6 +229,7 @@ export default function Contact() {
 												onChange={handleChange}
 												className={`w-full ${phoneError ? 'border-red-500 dark:border-red-400' : ''}`}
 												disabled={status === "submitting"}
+												required
 											/>
 											{phoneError && (
 												<>
