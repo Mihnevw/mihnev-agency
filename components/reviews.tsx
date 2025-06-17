@@ -6,12 +6,23 @@ import { MotionWrapper } from "@/components/motion-wrapper"
 import { AnimatedNumberWithLabel, AnimatedPercentage } from "@/components/animated-counter"
 import { motion } from "framer-motion"
 import { useTranslation } from "@/lib/hooks/useTranslation"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 
 export default function Reviews() {
   const { t } = useTranslation()
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Check if we're on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768) // 768px is the md breakpoint in Tailwind
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   const reviews = [
     {
@@ -104,8 +115,14 @@ export default function Reviews() {
   ]
 
   const nextSlide = () => {
-    if (currentIndex < reviews.length - 3) {
-      setCurrentIndex((prev) => prev + 1)
+    if (isMobile) {
+      if (currentIndex < reviews.length - 1) {
+        setCurrentIndex((prev) => prev + 1)
+      }
+    } else {
+      if (currentIndex < reviews.length - 3) {
+        setCurrentIndex((prev) => prev + 1)
+      }
     }
   }
 
@@ -169,9 +186,9 @@ export default function Reviews() {
                 variant="outline"
                 size="icon"
                 onClick={nextSlide}
-                disabled={currentIndex >= reviews.length - 3}
+                disabled={isMobile ? currentIndex >= reviews.length - 1 : currentIndex >= reviews.length - 3}
                 className={`h-12 w-12 rounded-full bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-slate-800 shadow-lg ${
-                  currentIndex >= reviews.length - 3 ? 'opacity-50 cursor-not-allowed' : ''
+                  (isMobile ? currentIndex >= reviews.length - 1 : currentIndex >= reviews.length - 3) ? 'opacity-50 cursor-not-allowed' : ''
                 }`}
               >
                 <ChevronRight className="h-5 w-5" />
@@ -182,7 +199,7 @@ export default function Reviews() {
             <div className="overflow-hidden">
               <motion.div
                 className="flex"
-                animate={{ x: `${-currentIndex * (100 / 3)}%` }}
+                animate={{ x: `${-currentIndex * (isMobile ? 100 : 100 / 3)}%` }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
                 {reviews.map((review, index) => (
@@ -272,7 +289,7 @@ export default function Reviews() {
 
             {/* Dots Indicator */}
             <div className="flex justify-center gap-2 mt-8">
-              {reviews.slice(0, reviews.length - 2).map((_, index) => (
+              {reviews.slice(0, isMobile ? reviews.length : reviews.length - 2).map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
