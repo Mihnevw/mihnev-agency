@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { useTranslation } from "@/lib/hooks/useTranslation"
 import { Button } from "@/components/ui/button"
-import { Database, Cloud, Lock, Smartphone, Bot, BarChart, ArrowRight } from "lucide-react"
+import { Database, Cloud, Lock, Smartphone, Bot, BarChart, ArrowRight, Search, FileText, Lightbulb, CheckCircle } from "lucide-react"
 import { useRouter } from "next/navigation"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
@@ -214,8 +214,80 @@ export default function SoftwareSolutions() {
               </div>
             </motion.div>
 
-            {/* Process Section */}
+            {/* Preparation and Planning Section */}
             <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="mt-20 mb-16"
+            >
+              <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-12 text-center">
+                {t("Preparation and Planning")}
+              </h2>
+
+              <div className="grid md:grid-cols-4 gap-6">
+                {[
+                  {
+                    step: "01",
+                    icon: <Search className="h-6 w-6" />,
+                    title: t("Business Analysis"),
+                    description: t(
+                      "Deep dive into your business model, goals, and current challenges to identify opportunities.",
+                    ),
+                  },
+                  {
+                    step: "02",
+                    icon: <FileText className="h-6 w-6" />,
+                    title: t("Requirements Gathering"),
+                    description: t("Document detailed functional and technical requirements for your custom solution."),
+                  },
+                  {
+                    step: "03",
+                    icon: <Lightbulb className="h-6 w-6" />,
+                    title: t("Solution Design"),
+                    description: t(
+                      "Create a detailed design document that outlines the features, architecture, and implementation plan for your custom solution.",
+                    ),
+                  },
+                  {
+                    step: "04",
+                    icon: <CheckCircle className="h-6 w-6" />,
+                    title: t("Project Planning"),
+                    description: t(
+                      "Develop detailed timeline, milestones, and resource allocation for successful delivery.",
+                    ),
+                  },
+                ].map((phase, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                    className="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-slate-100 dark:border-slate-700"
+                    whileHover={{ y: -5 }}
+                  >
+                    <div className="flex justify-center mb-4">
+                      <motion.div
+                        className="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400"
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.6 }}
+                      >
+                        {phase.icon}
+                      </motion.div>
+                    </div>
+                    <div className="text-xl font-bold text-slate-900 dark:text-white mb-2 text-center">
+                      {phase.step}
+                    </div>
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 text-center">{phase.title}</h3>
+                    <p className="text-slate-600 dark:text-slate-300 text-center">{phase.description}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+
+            {/* Process Section */}
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
@@ -266,7 +338,7 @@ export default function SoftwareSolutions() {
                   </motion.div>
                 ))}
               </div>
-            </motion.div>
+            </motion.div> */}
 
             {/* CTA Section */}
             <motion.div
