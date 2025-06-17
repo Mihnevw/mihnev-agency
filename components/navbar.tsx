@@ -285,7 +285,10 @@ export default function Navbar() {
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 + index * 0.1, duration: 0.5 }}
+                  transition={{
+                    initial: { delay: 0.4 + index * 0.1, duration: 0.5 },
+                    hover: { duration: 0 }
+                  }}
                 >
                   {item.name}
                 </motion.button>
