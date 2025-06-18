@@ -102,7 +102,7 @@ export default function Footer() {
                   <span className="text-sm">гр. Сливен</span>
                 </a>
                 <a
-                  href="tel:+359888888888"
+                  href="tel:+359882851151"
                   className="flex items-center gap-2 text-slate-300 hover:text-emerald-400 transition-colors"
                 >
                   <Phone className="h-4 w-4 text-emerald-400" />
