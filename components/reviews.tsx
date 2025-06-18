@@ -70,7 +70,7 @@ export default function Reviews() {
       position: "Маркетинг директор, БрандПро",
       avatar: "/girl-3.jpg?height=80&width=80",
       rating: 5,
-      text: "Изключително професионален подход и впечатляващи резултати. Те ни помогнаха да удвоим нашите продажби. Определено ще продължим сътрудничеството.",
+      text: "Изключително професионален подход и впечатляващи резултати. Екипът се отнесе с внимание към всеки детайл, предоставяйки ни не само качествена услуга, но и ценни идеи за развитие. Благодарение на тях удвоихме нашите продажби.",
       growthPercentage: 100,
       company: "БрандПро",
       industry: "Маркетинг",
@@ -80,7 +80,7 @@ export default function Reviews() {
       position: "Главен изпълнителен директор, ДигиталПлюс",
       avatar: "/men-3.avif?height=80&width=80",
       rating: 5,
-      text: "Невероятен екип с дълбоки познания и практичен опит. Благодарение на тях успяхме да оптимизираме процесите си и да намалим разходите с 30%, като същевременно подобрихме качеството.",
+      text: "Невероятен екип с дълбоки познания и практичен опит. Благодарение на тях успяхме да оптимизираме процесите си и да намалим разходите с 30%, като  подобрихме и качеството.",
       growthPercentage: 85,
       company: "ДигиталПлюс",
       industry: "Дигитални услуги",
@@ -147,11 +147,11 @@ export default function Reviews() {
   }
 
   return (
-    <section id="reviews" className="py-20 bg-white dark:bg-slate-900 relative overflow-hidden">
+    <section id="reviews" className="py-20 bg-white dark:bg-slate-800 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fillRule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23059669%22%20fill-opacity%3D%220.02%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-40 dark:opacity-10"></div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-0 md:px-4 relative z-10">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <MotionWrapper direction="up" className="text-center mb-16">
@@ -168,35 +168,33 @@ export default function Reviews() {
           {/* Carousel Container */}
           <div className="relative mb-16">
             {/* Navigation Buttons */}
-            <div className="absolute top-1/2 -translate-y-1/2 -left-4 z-20">
+            <div className="absolute top-1/2 -translate-y-1/2 md:-left-4 left-0 z-20">
               <Button
                 variant="outline"
                 size="icon"
                 onClick={prevSlide}
                 disabled={currentIndex === 0}
-                className={`h-12 w-12 rounded-full bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-slate-800 shadow-lg ${
-                  currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
+                className={`h-12 w-12 rounded-full bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-slate-800 shadow-lg ${currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
               >
                 <ChevronLeft className="h-5 w-5" />
               </Button>
             </div>
-            <div className="absolute top-1/2 -translate-y-1/2 -right-4 z-20">
+            <div className="absolute top-1/2 -translate-y-1/2 md:-right-4 right-0 z-20">
               <Button
                 variant="outline"
                 size="icon"
                 onClick={nextSlide}
                 disabled={isMobile ? currentIndex >= reviews.length - 1 : currentIndex >= reviews.length - 3}
-                className={`h-12 w-12 rounded-full bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-slate-800 shadow-lg ${
-                  (isMobile ? currentIndex >= reviews.length - 1 : currentIndex >= reviews.length - 3) ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
+                className={`h-12 w-12 rounded-full bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-slate-800 shadow-lg ${(isMobile ? currentIndex >= reviews.length - 1 : currentIndex >= reviews.length - 3) ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
               >
                 <ChevronRight className="h-5 w-5" />
               </Button>
             </div>
 
             {/* Reviews Carousel */}
-            <div className="overflow-hidden">
+            <div className="overflow-hidden px-4 md:px-0">
               <motion.div
                 className="flex"
                 animate={{ x: `${-currentIndex * (isMobile ? 100 : 100 / 3)}%` }}
@@ -205,13 +203,13 @@ export default function Reviews() {
                 {reviews.map((review, index) => (
                   <motion.div
                     key={index}
-                    className="w-full md:w-1/3 flex-shrink-0 px-4"
+                    className="w-full md:w-1/3 flex-shrink-0 px-0 md:px-4 py-4"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
                     <motion.div
-                      className="bg-slate-50 dark:bg-slate-800 p-8 rounded-2xl h-full border border-slate-100 dark:border-slate-700 shadow-sm"
+                      className="bg-white dark:bg-slate-700 p-8 rounded-2xl h-full border border-slate-100 dark:border-slate-700 shadow-sm"
                       whileHover={{
                         scale: 1.02,
                         y: -5,
@@ -259,24 +257,27 @@ export default function Reviews() {
                       </div>
 
                       {/* Author Info */}
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-start gap-6">
                         <motion.div
                           initial={{ scale: 0 }}
                           animate={{ scale: 1 }}
                           transition={{ delay: 0.4, type: "spring", stiffness: 300, damping: 20 }}
+                          className="flex-shrink-0 w-[70px]"
                         >
-                          <Image
-                            src={review.avatar || "/placeholder.svg"}
-                            alt={review.name}
-                            width={60}
-                            height={60}
-                            className="rounded-full border-2 border-emerald-100 dark:border-emerald-900"
-                          />
+                          <div className="w-[70px] h-[70px] relative">
+                            <Image
+                              src={review.avatar || "/placeholder.svg"}
+                              alt={review.name}
+                              width={80}
+                              height={80}
+                              className="rounded-full border-2 border-emerald-100 dark:border-emerald-900 object-cover"
+                            />
+                          </div>
                         </motion.div>
-                        <div>
-                          <h3 className="font-bold text-slate-900 dark:text-white">{review.name}</h3>
-                          <p className="text-sm text-slate-600 dark:text-slate-300">{review.position}</p>
-                          <p className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">
+                        <div className="flex flex-col justify-center min-h-[80px]">
+                          <h3 className="font-bold text-slate-900 dark:text-white text-lg leading-tight">{review.name}</h3>
+                          <p className="text-sm text-slate-600 dark:text-slate-300 leading-snug mt-1">{review.position}</p>
+                          <p className="text-xs text-emerald-600 dark:text-emerald-400 font-medium mt-1">
                             {review.industry}
                           </p>
                         </div>
@@ -293,11 +294,10 @@ export default function Reviews() {
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentIndex
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex
                       ? "bg-emerald-600 dark:bg-emerald-400 scale-125"
                       : "bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500"
-                  }`}
+                    }`}
                 />
               ))}
             </div>
