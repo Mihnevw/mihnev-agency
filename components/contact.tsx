@@ -127,11 +127,11 @@ export default function Contact() {
 	]
 
 	return (
-		<section id="contact" className="py-20 bg-slate-50 dark:bg-slate-900 scroll-mt-[100px]">
-			<div className="container mx-auto px-0 md:px-4">
+		<section id="contact" className="py-20 bg-slate-50 dark:bg-slate-900 scroll-mt-[100px] overflow-x-hidden">
+			<div className="container mx-auto px-4 w-full max-w-[100vw]">
 				<div className="max-w-6xl mx-auto">
 					{/* Header */}
-					<MotionWrapper direction="up" className="text-center mb-16">
+					<MotionWrapper direction="up" className="text-center mb-16 px-4 sm:px-0">
 						<h2 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
 							{t("Ready to Transform Your Business?")}
 						</h2>
@@ -145,11 +145,11 @@ export default function Contact() {
 					</MotionWrapper>
 
 					{/* Contact Grid */}
-					<div className="grid md:grid-cols-2 gap-12">
+					<div className="grid md:grid-cols-2 gap-8 md:gap-12 px-4 sm:px-0">
 						{/* Contact Form */}
 						<MotionWrapper direction="left">
 							<motion.div
-								className="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg relative"
+								className="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-2xl shadow-lg relative"
 								whileHover={{ scale: 1.02 }}
 								transition={{ type: "spring", stiffness: 300, damping: 20 }}
 							>

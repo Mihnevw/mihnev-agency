@@ -61,13 +61,13 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"
+      className="relative min-h-screen flex items-center justify-center overflow-x-hidden bg-gradient-to-br from-emerald-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fillRule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23059669%22%20fill-opacity%3D%220.05%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-40 dark:opacity-10"></div>
 
       {/* Hero Content */}
-      <div className="container mx-auto px-0 md:px-4 py-20 relative z-10">
+      <div className="container mx-auto px-4 py-20 relative z-10 w-full max-w-[100vw]">
         <div className="max-w-4xl mx-auto text-center">
           <MotionWrapper delay={0.2} direction="fade">
             <div className="mb-6">
@@ -110,7 +110,7 @@ export default function Hero() {
           </MotionWrapper>
 
           <MotionWrapper delay={0.8} direction="up">
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 px-4 sm:px-0">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -151,7 +151,7 @@ export default function Hero() {
 
           {/* Trust Indicators */}
           <MotionWrapper delay={1.0} direction="up">
-            <div className="flex flex-wrap justify-center items-center gap-8 text-slate-500 dark:text-slate-400 text-sm">
+            <div className="flex flex-wrap justify-center items-center gap-8 text-slate-500 dark:text-slate-400 text-sm px-4 sm:px-0">
               {[t("Free Consultation"), t("24/7 Support"), t("Money-Back Guarantee")].map((item, index) => (
                 <motion.div
                   key={item}

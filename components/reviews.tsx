@@ -147,14 +147,14 @@ export default function Reviews() {
   }
 
   return (
-    <section id="reviews" className="py-20 bg-white dark:bg-slate-800 relative overflow-hidden">
+    <section id="reviews" className="py-20 bg-white dark:bg-slate-800 relative overflow-x-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fillRule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23059669%22%20fill-opacity%3D%220.02%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-40 dark:opacity-10"></div>
 
-      <div className="container mx-auto px-0 md:px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 w-full max-w-[100vw]">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <MotionWrapper direction="up" className="text-center mb-16">
+          <MotionWrapper direction="up" className="text-center mb-16 px-4 sm:px-0">
             <h2 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
               {t("What Our Clients Say")}
             </h2>
@@ -194,16 +194,16 @@ export default function Reviews() {
             </div>
 
             {/* Reviews Carousel */}
-            <div className="overflow-hidden px-4 md:px-0">
+            <div className="overflow-hidden px-0">
               <motion.div
-                className="flex"
+                className="flex w-full"
                 animate={{ x: `${-currentIndex * (isMobile ? 100 : 100 / 3)}%` }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
                 {reviews.map((review, index) => (
                   <motion.div
                     key={index}
-                    className="w-full md:w-1/3 flex-shrink-0 px-0 md:px-4 py-4"
+                    className="w-full md:w-1/3 flex-shrink-0 px-4 py-4"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}

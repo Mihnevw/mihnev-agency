@@ -38,8 +38,8 @@ export default function About() {
   ]
 
   return (
-    <section id="about" className="py-20 bg-white dark:bg-slate-900">
-      <div className="container mx-auto px-0 md:px-4">
+    <section id="about" className="py-20 bg-white dark:bg-slate-900 overflow-x-hidden">
+      <div className="container mx-auto px-4 w-full max-w-[100vw]">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           {/* <MotionWrapper direction="up" className="text-center mb-16">
@@ -49,10 +49,10 @@ export default function About() {
           </MotionWrapper> */}
 
           {/* About Content */}
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left side - Image */}
             <MotionWrapper direction="left">
-              <div className="space-y-8">
+              <div className="space-y-8 px-4 sm:px-0">
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -116,7 +116,7 @@ export default function About() {
               </StaggerContainer>
 
               {/* Stats Card */}
-              <MotionWrapper direction="up" delay={0.3} className="mt-12">
+              <MotionWrapper direction="up" delay={0.3} className="mt-12 px-4 sm:px-0">
                 <motion.div
                   className="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg"
                   whileHover={{ scale: 1.02 }}

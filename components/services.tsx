@@ -32,11 +32,11 @@ export default function Portfolio() {
   ]
 
   return (
-    <section id="services" className="py-20 bg-slate-50 dark:bg-slate-800">
-      <div className="container mx-auto px-0 md:px-4">
+    <section id="services" className="py-20 bg-slate-50 dark:bg-slate-800 overflow-x-hidden">
+      <div className="container mx-auto px-4 w-full max-w-[100vw]">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <MotionWrapper direction="up" className="text-center mb-16">
+          <MotionWrapper direction="up" className="text-center mb-16 px-4 sm:px-0">
             <h2 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
               {t("Our Services")}
             </h2>
@@ -46,7 +46,7 @@ export default function Portfolio() {
           </MotionWrapper>
 
           {/* Services Grid */}
-          <StaggerContainer className="grid md:grid-cols-3 gap-8">
+          <StaggerContainer className="grid md:grid-cols-3 gap-6 md:gap-8 px-4 sm:px-0">
             {services.map((service, index) => (
               <StaggerItem key={index} direction="up">
                 <motion.div
