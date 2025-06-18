@@ -33,7 +33,7 @@ export default function Portfolio() {
 
   return (
     <section id="services" className="py-20 bg-slate-50 dark:bg-slate-800">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-0 md:px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <MotionWrapper direction="up" className="text-center mb-16">

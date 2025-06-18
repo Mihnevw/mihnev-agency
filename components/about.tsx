@@ -39,7 +39,7 @@ export default function About() {
 
   return (
     <section id="about" className="py-20 bg-white dark:bg-slate-900">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-0 md:px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           {/* <MotionWrapper direction="up" className="text-center mb-16">

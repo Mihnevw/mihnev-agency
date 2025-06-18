@@ -127,8 +127,8 @@ export default function Contact() {
 	]
 
 	return (
-		<section id="contact" className="py-20 bg-white dark:bg-slate-900">
-			<div className="container mx-auto px-4">
+		<section id="contact" className="py-20 bg-slate-50 dark:bg-slate-900 scroll-mt-[100px]">
+			<div className="container mx-auto px-0 md:px-4">
 				<div className="max-w-6xl mx-auto">
 					{/* Header */}
 					<MotionWrapper direction="up" className="text-center mb-16">

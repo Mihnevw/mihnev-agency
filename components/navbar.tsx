@@ -68,8 +68,8 @@ export default function Navbar() {
   // Return a transparent navbar initially
   if (!mounted) {
     return (
-      <nav className="fixed left-0 right-0 z-40 bg-transparent" style={{ top: "20px" }}>
-        <div className="container mx-auto px-4">
+      <nav className="fixed left-0 right-0 z-40 bg-transparent" style={{ top: "0px" }}>
+        <div className="container mx-auto px-0 md:px-4">
           <div className="flex items-center justify-between h-24">
             {/* Logo */}
             <div className="flex-shrink-0">
@@ -225,7 +225,7 @@ export default function Navbar() {
           transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)"
         }}
       >
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-0 md:px-4">
           <div className="flex items-center justify-between h-24">
             {/* Logo */}
             <motion.div
