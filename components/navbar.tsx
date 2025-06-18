@@ -174,7 +174,7 @@ export default function Navbar() {
             >
               <Phone className="h-4 w-4" />
               <a
-                href="tel:+15551234567"
+                href="tel:+359882851151"
                 onClick={handlePhoneClick}
                 className="hover:text-emerald-200 transition-colors"
               >
@@ -188,7 +188,7 @@ export default function Navbar() {
             >
               <Mail className="h-4 w-4" />
               <a
-                href="mailto:hello@yourservice.com"
+                href="mailto:stilianmihnev@gmail.com"
                 onClick={handleEmailClick}
                 className="hover:text-emerald-200 transition-colors"
               >
@@ -411,17 +411,17 @@ export default function Navbar() {
                   <div className="flex items-center gap-2">
                     <Phone className="h-4 w-4" />
                     <a
-                      href="tel:+15551234567"
+                      href="tel:+359882851151"
                       onClick={handlePhoneClick}
                       className="hover:text-emerald-600 dark:hover:text-emerald-400"
                     >
-                      +359 888888888
+                      +359 882851151
                     </a>
                   </div>
                   <div className="flex items-center gap-2">
                     <Mail className="h-4 w-4" />
                     <a
-                      href="mailto:hello@yourservice.com"
+                      href="mailto:stilianmihnev@gmail.com"
                       onClick={handleEmailClick}
                       className="hover:text-emerald-600 dark:hover:text-emerald-400"
                     >
