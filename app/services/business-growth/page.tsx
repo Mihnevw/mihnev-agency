@@ -3,7 +3,8 @@
 import { motion } from "framer-motion"
 import { useTranslation } from "@/lib/hooks/useTranslation"
 import { Button } from "@/components/ui/button"
-import { TrendingUp,
+import {
+  TrendingUp,
   Target,
   Users,
   BarChart,
@@ -28,22 +29,6 @@ export default function BusinessGrowth() {
   const router = useRouter()
 
   const growthStrategies = [
-    // {
-    //   icon: <TrendingUp className="h-8 w-8 text-emerald-600 dark:text-emerald-400" />,
-    //   title: t("Digital Strategy"),
-    //   description: t("Comprehensive digital transformation strategy to modernize your business operations."),
-    //   image: "/digital-1.png",
-    //   imageAlt: "Digital transformation strategy planning and implementation",
-    //   features: [
-    //     t("Market analysis"),
-    //     t("Competitor research"),
-    //     t("Growth opportunities identification"),
-    //     t("Technology stack assessment"),
-    //     t("Digital roadmap creation"),
-    //     t("ROI projections"),
-    //     t("Implementation timeline"),
-    //   ],
-    // },
     {
       icon: <Target className="h-8 w-8 text-emerald-600 dark:text-emerald-400" />,
       title: t("Marketing Automation"),
@@ -79,7 +64,12 @@ export default function BusinessGrowth() {
   ]
 
   const scrollToContact = () => {
-    router.push("/#contact")
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      router.push('/#contact');
+    }
   }
 
   return (
@@ -116,12 +106,18 @@ export default function BusinessGrowth() {
                     key={index}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                    className="bg-slate-50 dark:bg-slate-800 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700"
-                    whileHover={{
-                      y: -10,
-                      transition: { type: "spring", stiffness: 300, damping: 20 },
+                    transition={{
+                      type: "tween",
+                      duration: 0.2,
+                      opacity: { duration: 0.5, delay: 0.2 + index * 0.1 }
                     }}
+                    className="bg-slate-50 dark:bg-slate-800 rounded-2xl overflow-hidden hover:shadow-xl border border-slate-100 dark:border-slate-700"
+                    whileHover={{
+                      scale: 1.00,
+                      y: -5,
+                      transition: { duration: 0.2 }
+                    }}
+                    whileTap={{ scale: 0.98 }}
                   >
                     {/* Image Section */}
                     <div className="relative h-64 overflow-hidden">
@@ -180,7 +176,7 @@ export default function BusinessGrowth() {
               </div>
             </motion.div>
 
-            
+
             {/* CTA Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}

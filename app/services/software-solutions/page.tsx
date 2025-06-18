@@ -46,74 +46,15 @@ export default function SoftwareSolutions() {
         t("High availability"),
       ],
     },
-    // {
-    //   icon: <Smartphone className="h-8 w-8 text-emerald-600 dark:text-emerald-400" />,
-    //   title: t("Mobile Applications"),
-    //   description: t("Native and cross-platform mobile apps for iOS and Android devices."),
-    //   image: "/images/solutions/mobile-application.png",
-    //   imageAlt: "Mobile application interfaces on different devices",
-    //   features: [
-    //     t("Cross-platform compatibility"),
-    //     t("Offline functionality"),
-    //     t("Push notifications"),
-    //     t("Location services"),
-    //     t("Secure data storage"),
-    //     t("Performance optimization"),
-    //     t("Analytics integration"),
-    //   ],
-    // },
-    // {
-    //   icon: <Bot className="h-8 w-8 text-emerald-600 dark:text-emerald-400" />,
-    //   title: t("Automation Solutions"),
-    //   description: t("Automated systems to streamline operations and increase efficiency."),
-    //   image: "/images/solutions/automation-solution.png",
-    //   imageAlt: "Business process automation workflow diagram",
-    //   features: [
-    //     t("Task automation"),
-    //     t("Workflow optimization"),
-    //     t("Integration with existing systems"),
-    //     t("Custom triggers and actions"),
-    //     t("Performance monitoring"),
-    //     t("Error handling"),
-    //     t("Audit trails"),
-    //   ],
-    // },
-    // {
-    //   icon: <Lock className="h-8 w-8 text-emerald-600 dark:text-emerald-400" />,
-    //   title: t("Security Solutions"),
-    //   description: t("Robust security implementations to protect your business data and operations."),
-    //   image: "/images/solutions/security-solution.png",
-    //   imageAlt: "Cybersecurity protection system visualization",
-    //   features: [
-    //     t("Access control"),
-    //     t("Data encryption"),
-    //     t("Security auditing"),
-    //     t("Threat detection"),
-    //     t("Compliance management"),
-    //     t("Backup solutions"),
-    //     t("Incident response"),
-    //   ],
-    // },
-    // {
-    //   icon: <BarChart className="h-8 w-8 text-emerald-600 dark:text-emerald-400" />,
-    //   title: t("Analytics & Reporting"),
-    //   description: t("Data analytics and reporting tools for informed decision-making."),
-    //   image: "/images/solutions/analytics-dashboard.png",
-    //   imageAlt: "Business analytics dashboard with charts and graphs",
-    //   features: [
-    //     t("Custom dashboards"),
-    //     t("Real-time analytics"),
-    //     t("Data visualization"),
-    //     t("Automated reporting"),
-    //     t("KPI tracking"),
-    //     t("Trend analysis"),
-    //     t("Export capabilities"),
-    //   ],
-    // },
   ]
 
   const scrollToContact = () => {
-    router.push("/#contact")
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      router.push('/#contact');
+    }
   }
 
   return (
@@ -147,16 +88,22 @@ export default function SoftwareSolutions() {
               <div className="grid md:grid-cols-2 gap-10">
                 {solutionTypes.map((type, index) => (
                   <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                    className="bg-slate-50 dark:bg-slate-800 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700"
-                    whileHover={{
-                      y: -10,
-                      transition: { type: "spring", stiffness: 300, damping: 20 },
-                    }}
-                  >
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    type: "tween",
+                    duration: 0.2,
+                    opacity: { duration: 0.5, delay: 0.2 + index * 0.1 }
+                  }}
+                  className="bg-slate-50 dark:bg-slate-800 rounded-2xl overflow-hidden hover:shadow-xl border border-slate-100 dark:border-slate-700"
+                  whileHover={{
+                    scale: 1.00,
+                    y: -5,
+                    transition: { duration: 0.2 }
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                >
                     {/* Image Section */}
                     <div className="relative h-64 overflow-hidden">
                       <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>

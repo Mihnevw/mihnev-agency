@@ -89,7 +89,12 @@ export default function WebsiteDevelopment() {
   ]
 
   const scrollToContact = () => {
-    router.push("/#contact")
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      router.push('/#contact');
+    }
   }
 
   return (
@@ -126,12 +131,18 @@ export default function WebsiteDevelopment() {
                     key={index}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                    className="bg-slate-50 dark:bg-slate-800 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700"
-                    whileHover={{
-                      y: -10,
-                      transition: { type: "spring", stiffness: 300, damping: 20 },
+                    transition={{
+                      type: "tween",
+                      duration: 0.2,
+                      opacity: { duration: 0.5, delay: 0.2 + index * 0.1 }
                     }}
+                    className="bg-slate-50 dark:bg-slate-800 rounded-2xl overflow-hidden hover:shadow-xl border border-slate-100 dark:border-slate-700"
+                    whileHover={{
+                      scale: 1.00,
+                      y: -5,
+                      transition: { duration: 0.2 }
+                    }}
+                    whileTap={{ scale: 0.98 }}
                   >
                     {/* Image Section */}
                     <div className="relative h-64 overflow-hidden">
